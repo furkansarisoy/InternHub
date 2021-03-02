@@ -1,0 +1,80 @@
+$blop: var(--blop-color);
+$color: var(--color);
+$bg-color: var(--bg-color);
+$borderW: 1px;
+
+.blob-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    $numOfBlobs: 4;
+    z-index: 1;
+    position: relative;
+    margin-bottom: 30px;
+    text-align: center;
+    text-transform: uppercase;
+    color: $blop;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: transparent;
+    outline: none;
+    border: $borderW solid $blop;
+    transition: color 0.5s;
+    cursor: pointer;
+    border-radius: 30px;
+
+    &:hover {
+        color: $color;
+        border-radius: 30px;
+        border: $borderW solid $color;
+    }
+
+    &__inner {
+        z-index: -1;
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+        background: $bg-color;
+    }
+
+    // additional container created, because in FF blobs are breaking overflow:hidden of element with svg gooey filter
+    &__blobs {
+        position: relative;
+        display: block;
+        height: 100%;
+    }
+
+    &__blob {
+        position: absolute;
+        top: $borderW;
+        width: 100% / $numOfBlobs;
+        height: 100%;
+        background: $blop;
+        border-radius: 100%;
+        transform: translate3d(0, 150%, 0) scale(1.7);
+        transition: transform 0.45s;
+
+        @for $i from 1 through $numOfBlobs {
+            &:nth-child(#{$i}) {
+                left: ($i - 1) * (95% / $numOfBlobs);
+                transition-delay: ($i - 1) * 0.08s;
+            }
+        }
+
+        .blob-btn:hover & {
+            transform: translateZ(0) scale(1.7);
+        }
+    }
+}
+@media screen and (max-width: 570px) {
+    .blob-btn {
+        padding: 15px 20px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,44 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.wave {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    z-index: -1;
+}
+
+.login-area {
+    background-color: rgb(250, 246, 246);
+    width: 55%;
+    height: 50%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0 2em;
+    border-radius: 10px;
+    box-shadow: 0 0 5px;
+}
+
+.login-left {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
