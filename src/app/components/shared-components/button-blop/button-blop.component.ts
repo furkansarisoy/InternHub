@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'internhub-button-blop',
@@ -15,10 +15,17 @@ export class ButtonBlopComponent implements OnInit {
   @HostBinding("style.--bg-color")
   @Input() bgColor = "#ffffff";
 
+  @Input() type;
+
+  @Output() clickButton = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onClickButton(event) {
+    this.clickButton.emit(event);
   }
 
 }

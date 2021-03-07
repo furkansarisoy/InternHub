@@ -6,23 +6,19 @@
             <img src="../../../assets/homepage-img.jpg"
                  width="400px">
         </div>
-        <div class="login-right">
-            <h3>Hoşgeldin</h3>
-            <form>
-                <div class="form-group">
-                    <label>E-mail</label>
-                    <input>
-                </div>
-                <div class="form-group">
-                    <label>Şifre</label>
-                    <input>
-                </div>
-                <p>Şifreni mi unuttun ? <a><b>Hesap Oluştur</b></a></p>
-                <div style="width: 250px;height: 50px; margin: 15px 0px;">
-                    <internhub-button-blop [title]="'Giriş Yap'"></internhub-button-blop>
-                </div>
-                <p>Hesabın yok mu ? <a><b>Hesap Oluştur</b></a></p>
-            </form>
+        <div class="login-right"
+             style="display: flex; align-items: center; justify-content: center;">
+            <nz-tabset>
+                <nz-tab nzTitle="Giriş Yap">
+                    <internhub-sign-in></internhub-sign-in>
+                </nz-tab>
+                <nz-tab nzTitle="Kayıt Ol">
+                    <internhub-sign-up></internhub-sign-up>
+                </nz-tab>
+                <nz-tab nzTitle="Şifreni Sıfırla">
+                    <internhub-reset></internhub-reset>
+                </nz-tab>
+            </nz-tabset>
         </div>
     </div>
 </div>

@@ -1,0 +1,23 @@
+.companies {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .company {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .companies {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 570px) {
+    .companies {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

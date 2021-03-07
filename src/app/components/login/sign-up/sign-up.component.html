@@ -1,0 +1,68 @@
+<form nz-form
+      [formGroup]="signUpForm"
+      (ngSubmit)="onSubmit()">
+
+    <nz-form-item>
+        <nz-form-control nzHasFeedback
+                         [nzErrorTip]="emailErrorTpl">
+            <nz-input-group nzPrefixIcon="mail">
+                <input nz-input
+                       formControlName="email"
+                       placeholder="Mail adresinizi giriniz"
+                       type="email" />
+                <ng-template #emailErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('email')">
+                        E-mail formatı doğru değil!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzHasFeedback
+                         [nzErrorTip]="passwordErrorTpl">
+            <nz-input-group nzPrefixIcon="lock">
+                <input nz-input
+                       placeholder="Şifrenizi giriniz"
+                       type="password"
+                       formControlName="password" />
+                <ng-template #passwordErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+
+        <nz-form-control nzHasFeedback
+                         [nzErrorTip]="confirmErrorTpl">
+            <nz-input-group nzPrefixIcon="lock">
+                <input nz-input
+                       type="password"
+                       formControlName="confirm"
+                       placeholder="Şifrenizi tekrar giriniz" />
+                <ng-template #confirmErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('confirm')">
+                        Şifreler uyuşmuyor!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <internhub-button-blop [title]="'Kayıt Ol'"></internhub-button-blop>
+        </nz-form-control>
+    </nz-form-item>
+</form>

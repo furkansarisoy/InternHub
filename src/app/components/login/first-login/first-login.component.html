@@ -1,0 +1,44 @@
+<nz-modal [(nzVisible)]="modalData.visible"
+          nzTitle="The first Modal"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="onSubmit()">
+    <ng-container *nzModalContent>
+        <h3>Internhub'a hoşgeldiniz.</h3>
+        <br />
+        <h4>Son bir adım kaldı...</h4>
+        <hr />
+        <form nz-form
+              [formGroup]="credentialForm"
+              (ngSubmit)="onSubmit()">
+
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="name">Adınız</nz-form-label>
+                    <input nz-input
+                           formControlName="name"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="surname">Soyadınız</nz-form-label>
+
+                    <input nz-input
+                           formControlName="surname"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-container>
+</nz-modal>
+
+<ng-template #errorTpl
+             let-control>
+    <ng-container *ngIf="control.hasError('required')">
+        Bu alanın doldurulması zorunludur!
+    </ng-container>
+</ng-template>

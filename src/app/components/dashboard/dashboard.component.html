@@ -1,0 +1,21 @@
+<div style="width: 40%; margin: 50px;">
+    <nz-input-group [nzSuffix]="suffixIconSearch">
+        <input type="text"
+               nz-input
+               placeholder="Şirket ara" />
+    </nz-input-group>
+    <ng-template #suffixIconSearch>
+        <i nz-icon
+           nzType="search"
+           nzTheme="outline"></i>
+    </ng-template>
+</div>
+<div class="companies">
+    <div *ngFor="let company of companies"
+         class="company">
+        <internhub-company-card [name]="company.name"
+                                [city]="company.city"
+                                [rate]="company.rate"
+                                [logoUrl]="company.logoUrl"></internhub-company-card>
+    </div>
+</div>
