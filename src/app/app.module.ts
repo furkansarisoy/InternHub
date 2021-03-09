@@ -26,6 +26,7 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzLayoutModule } from 'ng-zorro-antd/layout';
 
 // Component imports
 import { AppComponent } from './app.component';
@@ -41,6 +42,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthService } from './shared/services/auth-service/auth.service';
 import { FirstLoginComponent } from './components/login/first-login/first-login.component';
 import { CompanyCardComponent } from './components/dashboard/company-card/company-card.component';
+import { CompanyComponent } from './components/company/company.component';
 
 
 registerLocaleData(tr);
@@ -60,6 +62,7 @@ registerLocaleData(tr);
     DashboardComponent,
     FirstLoginComponent,
     CompanyCardComponent,
+    CompanyComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -80,7 +83,8 @@ registerLocaleData(tr);
     NzCardModule,
     NzAvatarModule,
     NzRateModule,
-    NzIconModule
+    NzIconModule,
+    NzLayoutModule
   ],
   providers: [{ provide: NZ_I18N, useValue: tr_TR }, AuthService],
   bootstrap: [AppComponent]

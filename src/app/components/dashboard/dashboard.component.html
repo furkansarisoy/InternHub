@@ -13,9 +13,11 @@
 <div class="companies">
     <div *ngFor="let company of companies"
          class="company">
-        <internhub-company-card [name]="company.name"
-                                [city]="company.city"
-                                [rate]="company.rate"
-                                [logoUrl]="company.logoUrl"></internhub-company-card>
+        <a [routerLink]="'/company/'+company.companyId">
+            <internhub-company-card [name]="company.name"
+                                    [city]="company.city"
+                                    [rate]="company.rate"
+                                    [logoUrl]="company.logoUrl"></internhub-company-card>
+        </a>
     </div>
 </div>

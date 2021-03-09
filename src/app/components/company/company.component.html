@@ -1,0 +1,25 @@
+<div class="row">
+    <div style="text-align: center; border-right:1px solid; height: 100%;"
+         class="col-3">
+        <img style="margin-top: 50px; border: 1px solid;"
+             width="250px"
+             [src]="company?.logoUrl">
+        <h2 style="margin-top: 50px;"> {{company?.name}} </h2>
+        <h4> {{company?.city}} </h4>
+    </div>
+    <div class="col-9">
+        <nz-card *ngFor="let review of reviews"
+                 [nzBordered]="false"
+                 [nzTitle]="review?.title"
+                 [nzExtra]="extraTemplate">
+            <div style="display: flex;">
+                <img [src]="review.userData.photoURL"
+                     width="100px">
+                <p> {{review.q1}} </p>
+            </div>
+        </nz-card>
+    </div>
+</div>
+<ng-template #extraTemplate>
+    <a>Tamamını Oku</a>
+</ng-template>
