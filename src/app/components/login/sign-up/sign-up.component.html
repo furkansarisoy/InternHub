@@ -4,19 +4,22 @@
 
     <nz-form-item>
         <nz-form-control nzHasFeedback
+                         nzValidatingTip="Kontrol ediliyor..."
                          [nzErrorTip]="emailErrorTpl">
             <nz-input-group nzPrefixIcon="mail">
                 <input nz-input
                        formControlName="email"
-                       placeholder="Mail adresinizi giriniz"
-                       type="email" />
+                       placeholder="Mail adresinizi giriniz" />
                 <ng-template #emailErrorTpl
                              let-control>
-                    <ng-container *ngIf="control.hasError('email')">
-                        E-mail formatı doğru değil!
-                    </ng-container>
                     <ng-container *ngIf="control.hasError('required')">
                         Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('email')">
+                        Lütfen geçerli bir email giriniz!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('duplicated')">
+                        Email kullanılıyor!
                     </ng-container>
                 </ng-template>
             </nz-input-group>
@@ -34,6 +37,9 @@
                              let-control>
                     <ng-container *ngIf="control.hasError('required')">
                         Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('min')">
+                        Şifreniz 6 karakterden kısa olamaz!
                     </ng-container>
                 </ng-template>
             </nz-input-group>
@@ -66,3 +72,4 @@
         </nz-form-control>
     </nz-form-item>
 </form>
+<internhub-first-login [modalData]="userProfileModal"></internhub-first-login>

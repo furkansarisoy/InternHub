@@ -1,14 +1,14 @@
-import { DocumentData, DocumentReference } from "@angular/fire/firestore";
-import { User } from "./user.interface";
+import { DocumentData } from "@angular/fire/firestore";
 
 export interface Review {
-    companyId: string;
-    uid: DocumentReference;
-    title: string;
-    rate: string;
-    q1: string;
-    q2: string;
-    q3: boolean;
-    q4: number;
-    userData: DocumentData;
+    reviewId?: string;
+    companyId?: string;
+    uid?: string;
+    title?: string;
+    applyType: string;
+    rate?: string;
+    isPay?: boolean;
+    employeeCount?: number;
+    extra?: string;
+    userData?: DocumentData;
 }

@@ -1,6 +1,14 @@
-<nav class="navbar">
-    <div class="container-fluid">
-        <a class="navbar-brand"
-           href="#">InternHub</a>
+<nav class="navbar navbar-light justify-content-between p-5">
+    <a class="navbar-brand">Internhub</a>
+    <div *ngIf="user">
+        <button nz-button
+                nzSize="small"
+                nzType="dashed"
+                (click)="onClickNewReview()">Yorum Yap</button>
+        <i nz-icon
+           nzType="poweroff"
+           nzTheme="outline"
+           style="margin-left: 15px; cursor: pointer;"
+           (click)="signOut()"></i>
     </div>
 </nav>

@@ -36,11 +36,14 @@ export class AuthService {
     })
   }
 
-  signUp(email: string, password: string) {
-    this.angularFireAuth.createUserWithEmailAndPassword(email, password)
+  signUp(userCredential: User, password: string) {
+    this.angularFireAuth.createUserWithEmailAndPassword(userCredential.email, password)
       .then(res => {
         this.notificationService.success("Başarılı", "Kayıt olma işleminiz başarı ile tamamladı.", { nzPlacement: "bottomRight" });
-        this.SetUserData(res.user);
+        this.SetUserData(res.user, userCredential);
+        this.ngZone.run(() => {
+          this.router.navigate(['/dashboard']);
+        });
       })
       .catch(error => {
         this.notificationService.error("Hata", "Kayıt olma işlemi sırasında bir hata oluştu:" + error.message, { nzPlacement: "bottomRight" });
@@ -53,8 +56,7 @@ export class AuthService {
         this.notificationService.success("Başarılı", "Başarıyla giriş yapıldı. Yönlendiriliyorsunuz...", { nzPlacement: "bottomRight" });
         this.ngZone.run(() => {
           this.router.navigate(['/dashboard']);
-        })
-        this.SetUserData(res.user);
+        });
       })
       .catch(error => {
         this.notificationService.error("Hata", "Giriş yapma işlemi sırasında bir hata oluştu:" + error.message, { nzPlacement: "bottomRight" });
@@ -78,14 +80,18 @@ export class AuthService {
     return (user !== null) ? true : false;
   }
 
-  SetUserData(user) {
+  SetUserData(user, userCredential: User) {
     const userRef: AngularFirestoreDocument<any> = this.angularFirestore.doc(`users/${user.uid}`);
     const userData: User = {
       uid: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified
+      emailVerified: user.emailVerified,
+      email: userCredential.email,
+      firstName: userCredential.firstName,
+      lastName: userCredential.lastName,
+      photoURL: userCredential.photoURL ? userCredential.photoURL : "",
+      school: userCredential.school,
+      department: userCredential.department,
+      city: userCredential.city
     }
     return userRef.set(userData, {
       merge: true
@@ -97,7 +103,8 @@ export class AuthService {
       localStorage.removeItem('user');
       this.ngZone.run(() => {
         this.router.navigate(['/homepage']);
-      })
+      });
+      this.notificationService.success('Oturum Kapatıldı', 'Oturumunuz güvenli bir şekilde sonlandırıldı.');
     })
   }
 

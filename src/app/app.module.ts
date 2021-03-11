@@ -12,6 +12,11 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import {
+  AngularFireStorageModule,
+  AngularFireStorageReference,
+  AngularFireUploadTask,
+} from "@angular/fire/storage";
 
 //NgZorro imports
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
@@ -27,6 +32,10 @@ import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
+import { NzButtonModule } from 'ng-zorro-antd/button';
+import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NzRadioModule } from 'ng-zorro-antd/radio';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
 
 // Component imports
 import { AppComponent } from './app.component';
@@ -43,6 +52,8 @@ import { AuthService } from './shared/services/auth-service/auth.service';
 import { FirstLoginComponent } from './components/login/first-login/first-login.component';
 import { CompanyCardComponent } from './components/dashboard/company-card/company-card.component';
 import { CompanyComponent } from './components/company/company.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { NewReviewComponent } from './components/new-review/new-review.component';
 
 
 registerLocaleData(tr);
@@ -63,11 +74,14 @@ registerLocaleData(tr);
     FirstLoginComponent,
     CompanyCardComponent,
     CompanyComponent,
+    UserProfileComponent,
+    NewReviewComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    AngularFireStorageModule,
     BrowserModule,
     NgbModule,
     AppRoutingModule,
@@ -84,9 +98,13 @@ registerLocaleData(tr);
     NzAvatarModule,
     NzRateModule,
     NzIconModule,
-    NzLayoutModule
+    NzLayoutModule,
+    NzButtonModule,
+    NzSelectModule,
+    NzRadioModule,
+    NzUploadModule
   ],
-  providers: [{ provide: NZ_I18N, useValue: tr_TR }, AuthService],
+  providers: [{ provide: NZ_I18N, useValue: tr_TR }, AuthService, { provide: Storage }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

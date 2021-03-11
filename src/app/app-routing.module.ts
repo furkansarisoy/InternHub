@@ -6,13 +6,15 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AuthGuard } from './shared/services/auth-service/auth.guard';
 import { CompanyComponent } from './components/company/company.component';
+import { NewReviewComponent } from './components/new-review/new-review.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/homepage', pathMatch: 'full' },
   { path: 'homepage', component: HomepageComponent },
   { path: 'auth', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'company/:id', component: CompanyComponent }
+  { path: 'company/:id', component: CompanyComponent },
+  { path: 'new-review', component: NewReviewComponent }
 ]
 
 @NgModule({

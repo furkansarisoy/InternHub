@@ -25,11 +25,66 @@
                 <nz-form-control nzHasFeedback
                                  [nzErrorTip]="errorTpl">
                     <nz-form-label nzRequired
-                                   nzFor="surname">Soyadınız</nz-form-label>
+                                   nzFor="lastName">Soyadınız</nz-form-label>
 
                     <input nz-input
-                           formControlName="surname"
+                           formControlName="lastName"
                            type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="school">Okul</nz-form-label>
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Okulunuzu seçiniz"
+                               formControlName="school">
+                        <nz-option *ngFor="let university of universities"
+                                   [nzLabel]="university.name"
+                                   [nzValue]="university.name"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="department">Bölüm</nz-form-label>
+                    <input nz-input
+                           formControlName="department"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="city">Yaşadığınız şehir</nz-form-label>
+                    <input nz-input
+                           formControlName="city"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzFor="photoURL">Profil Fotoğrafı</nz-form-label>
+                    <div class="form-group col-12">
+                        <input type="file"
+                               id="file"
+                               #userPhoto
+                               (change)="upload($event)"
+                               name="image"
+                               autocomplete="off"
+                               formControlName="photoUrl" />
+                    </div>
+                    <div>
+                        <img *ngIf="url"
+                             [src]="url"
+                             width="50px">
+                    </div>
                 </nz-form-control>
             </nz-form-item>
         </form>

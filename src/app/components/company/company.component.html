@@ -7,19 +7,34 @@
         <h2 style="margin-top: 50px;"> {{company?.name}} </h2>
         <h4> {{company?.city}} </h4>
     </div>
-    <div class="col-9">
+    <div class="col-9 row">
         <nz-card *ngFor="let review of reviews"
-                 [nzBordered]="false"
+                 class="col-md-5"
+                 style="margin: 10px 40px; height: 250px;"
+                 [nzHoverable]="true"
+                 [nzBordered]="true"
                  [nzTitle]="review?.title"
                  [nzExtra]="extraTemplate">
-            <div style="display: flex;">
-                <img [src]="review.userData.photoURL"
-                     width="100px">
-                <p> {{review.q1}} </p>
+
+            <div style="display: flex;justify-content: space-between; align-items: center;">
+                <div style="text-align: center;">
+                    <nz-avatar nzIcon="user"
+                               [nzSize]="70"
+                               [nzSrc]="review.userData.photoURL"></nz-avatar>
+                    <h6><b> {{review.userData.firstName}} {{review.userData.lastName}} </b></h6>
+                    <i> {{review.userData.school}} </i><br>
+                    <i> {{review.userData.department}} </i>
+                </div>
+                <div>
+                    <p><b>Staja alım tipi:</b> {{ review?.applyType }}</p>
+                    <p> <b>Staj için ödeme yapıldı mı?</b> {{ review?.isPay }}</p>
+                    <p><b>Çalışan sayısı:</b> {{ review?.employeeCount }}</p>
+                </div>
             </div>
+            <ng-template #extraTemplate>
+                <nz-rate [ngModel]="review.rate"
+                         nzDisabled></nz-rate>
+            </ng-template>
         </nz-card>
     </div>
 </div>
-<ng-template #extraTemplate>
-    <a>Tamamını Oku</a>
-</ng-template>
