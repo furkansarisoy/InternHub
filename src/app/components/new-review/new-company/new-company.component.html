@@ -1,0 +1,75 @@
+<nz-modal [(nzVisible)]="modalData.visible"
+          nzTitle="The first Modal"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="onSubmit()">
+    <ng-container *nzModalContent>
+        <h3>Aşağıdaki bilgileri doldurarak sisteme çalıştığınız yeri ekleyebilirsiniz.</h3>
+        <br />
+        <form nz-form
+              [formGroup]="companyForm"
+              (ngSubmit)="onSubmit()">
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="name">Şirket Adı</nz-form-label>
+                    <input nz-input
+                           formControlName="name"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="city">Bulunduğu Şehir</nz-form-label>
+                    <input nz-input
+                           formControlName="city"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzFor="district">Bulunduğu İlçe</nz-form-label>
+                <input nz-input
+                       formControlName="district"
+                       type="text" />
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzFor="email">Email Adresi</nz-form-label>
+                <input nz-input
+                       formControlName="email"
+                       type="email" />
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzFor="phone">Telefon Numarası</nz-form-label>
+                <input nz-input
+                       formControlName="phone"
+                       type="tel" />
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzFor="logoUrl">Profil Fotoğrafı</nz-form-label>
+                <div class="form-group col-12">
+                    <input type="file"
+                           id="file"
+                           #userPhoto
+                           (change)="upload($event)"
+                           name="image"
+                           autocomplete="off"
+                           formControlName="logoUrl" />
+                </div>
+                <div>
+                    <img *ngIf="url"
+                         [src]="url"
+                         width="50px">
+                </div>
+            </nz-form-item>
+        </form>
+    </ng-container>
+</nz-modal>
+
+<ng-template #errorTpl
+             let-control>
+    <ng-container *ngIf="control.hasError('required')">
+        Bu alanın doldurulması zorunludur!
+    </ng-container>
+</ng-template>

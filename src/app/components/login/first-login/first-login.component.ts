@@ -18,7 +18,6 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class FirstLoginComponent implements OnInit {
 
-  selectedFile: File = null;
   url;
   downloadURL: Observable<string>;
 
@@ -72,9 +71,9 @@ export class FirstLoginComponent implements OnInit {
   upload(event) {
     var id = this.angularFirestore.createId()
     const file = event.target.files[0];
-    const filePath = `assets/${id}`;
+    const filePath = `assets/profile-photos/${id}`;
     const fileRef = this.angularFireStorage.ref(filePath);
-    const task = this.angularFireStorage.upload(`assets/${id}`, file);
+    const task = this.angularFireStorage.upload(`assets/profile-photos/${id}`, file);
     task
       .snapshotChanges()
       .pipe(

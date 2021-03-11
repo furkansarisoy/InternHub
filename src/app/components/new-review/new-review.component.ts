@@ -14,6 +14,9 @@ import { UserProfileService } from 'src/app/shared/services/user-profile-service
 export class NewReviewComponent implements OnInit {
 
   reviewForm: FormGroup;
+  modalData = {
+    visible: false
+  }
   companies;
   activeUser;
   userCredentials;
@@ -58,6 +61,7 @@ export class NewReviewComponent implements OnInit {
       this.userCredentials = { ...credentials };
     });
   }
+
   onSubmit() {
     if (this.reviewForm.valid) {
       this.review.reviewForm = this.reviewForm.value;
@@ -67,5 +71,8 @@ export class NewReviewComponent implements OnInit {
     }
   }
 
+  openModal() {
+    this.modalData.visible = true;
+  }
 
 }

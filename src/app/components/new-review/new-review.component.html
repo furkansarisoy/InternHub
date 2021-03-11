@@ -22,7 +22,7 @@
                 <nz-form-label nzRequired
                                nzFor="company">Bir şirket seçiniz. Eğer çalıştığınız şirket listede yoksa lütfen yeni
                     bir
-                    şirket ekleyiniz. </nz-form-label><a>Yeni Şirket Ekle</a>
+                    şirket ekleyiniz. </nz-form-label><a (click)="openModal()">Yeni Şirket Ekle</a>
                 <nz-select nzShowSearch
                            nzAllowClear
                            nzPlaceHolder="Şirket seçiniz"
@@ -88,3 +88,5 @@
     </form>
 
 </div>
+
+<internhub-new-company [modalData]="modalData"></internhub-new-company>

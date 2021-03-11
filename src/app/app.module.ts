@@ -54,6 +54,7 @@ import { CompanyCardComponent } from './components/dashboard/company-card/compan
 import { CompanyComponent } from './components/company/company.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NewReviewComponent } from './components/new-review/new-review.component';
+import { NewCompanyComponent } from './components/new-review/new-company/new-company.component';
 
 
 registerLocaleData(tr);
@@ -76,6 +77,7 @@ registerLocaleData(tr);
     CompanyComponent,
     UserProfileComponent,
     NewReviewComponent,
+    NewCompanyComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
