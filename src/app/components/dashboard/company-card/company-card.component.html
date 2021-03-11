@@ -2,10 +2,14 @@
          [nzCover]="coverTemplate">
     <nz-card-meta [nzTitle]="name"
                   [nzDescription]="city"></nz-card-meta>
-    <nz-rate [ngModel]="rate"
-             nzDisabled></nz-rate>
 </nz-card>
 
 <ng-template #coverTemplate>
-    <img [src]="logoUrl" />
+    <ng-container *ngIf="logoUrl">
+        <img [src]="logoUrl" />
+    </ng-container>
+    <ng-container *ngIf="!logoUrl">
+        <img
+             src="https://static.licdn.com/sc/p/com.linkedin.organization-guest-frontend%3Aorganization-guest-frontend-static-content%2B0.1.345/f/%2Forganization-guest-frontend%2Fimages%2Foverview%2Fcompany-logo-ghost.png">
+    </ng-container>
 </ng-template>

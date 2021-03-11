@@ -21,6 +21,10 @@ export class CompanyComponent implements OnInit, OnDestroy {
   reviews: Review[] = [];
   user: User;
   loadedReviewIds: string[] = [];
+  reviewModal = {
+    visible: false,
+    data: null
+  }
 
   constructor(private route: ActivatedRoute, private companyService: CompanyService, private reviewService: ReviewService, private userProfileService: UserProfileService) { }
 
@@ -31,7 +35,7 @@ export class CompanyComponent implements OnInit, OnDestroy {
       this.getReviews()
     );
   }
-  url = "https://firebasestorage.googleapis.com/v0/b/intern-hub-83d95.appspot.com/o/assets%2FVppEQNLDTVPmWPsrRbTs?alt=media&token=9bf01153-58d7-400e-9e25-7be5baa003b1";
+
   ngOnDestroy(): void {
     this.subscriptions.forEach(subscription => subscription.unsubscribe());
     this.reviews = [];
@@ -60,5 +64,12 @@ export class CompanyComponent implements OnInit, OnDestroy {
       });
     });
   }
+
+  onClickReview(event) {
+    console.log(event);
+    this.reviewModal.data = event;
+    this.reviewModal.visible = true;
+  }
+
 
 }

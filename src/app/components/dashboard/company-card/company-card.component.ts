@@ -9,7 +9,6 @@ export class CompanyCardComponent implements OnInit {
 
   @Input() name: string;
   @Input() city: string;
-  @Input() rate: number;
   @Input() logoUrl: string;
 
   constructor() { }

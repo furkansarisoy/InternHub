@@ -36,6 +36,7 @@ import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 
 // Component imports
 import { AppComponent } from './app.component';
@@ -55,6 +56,7 @@ import { CompanyComponent } from './components/company/company.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { NewReviewComponent } from './components/new-review/new-review.component';
 import { NewCompanyComponent } from './components/new-review/new-company/new-company.component';
+import { ExpandReviewComponent } from './components/company/expand-review/expand-review.component';
 
 
 registerLocaleData(tr);
@@ -78,6 +80,7 @@ registerLocaleData(tr);
     UserProfileComponent,
     NewReviewComponent,
     NewCompanyComponent,
+    ExpandReviewComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

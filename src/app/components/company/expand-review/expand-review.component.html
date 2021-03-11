@@ -1,0 +1,34 @@
+<nz-modal [(nzVisible)]="config.visible"
+          [nzTitle]="config.data?.title"
+          nzCentered
+          [nzFooter]="btnTmpl"
+          (nzOnCancel)="handleOkMiddle()">
+    <ng-container *ngIf="config.visible">
+        <div style="display: flex;justify-content: space-around; align-items: center;">
+            <div style="text-align: center;">
+                <nz-avatar nzIcon="user"
+                           [nzSize]="70"
+                           [nzSrc]="config.data?.userData.photoURL"></nz-avatar>
+                <h6><b> {{config.data?.userData.firstName}} {{config.data?.userData.lastName}} </b></h6>
+                <i> {{config.data?.userData.school}} </i><br>
+                <i> {{config.data?.userData.department}} </i><br>
+                <i> {{config.data?.userData?.email}} </i>
+
+            </div>
+            <div>
+                <p><b>Staja alım tipi:</b> {{ config.data?.applyType }}</p>
+                <p> <b>Staj için ödeme yapıldı mı?</b> {{ config.data?.isPay }}</p>
+                <p><b>Çalışan sayısı:</b> {{ config.data?.employeeCount }}</p>
+            </div>
+        </div>
+        <hr>
+        <div class="container p-2">
+            <p> {{config.data?.extra}} </p>
+        </div>
+    </ng-container>
+</nz-modal>
+<ng-template #btnTmpl>
+    <button nz-button
+            nzType="dashed"
+            (click)="handleOkMiddle()">Kapat</button>
+</ng-template>

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row h-100">
     <div style="text-align: center; border-right:1px solid; height: 100%;"
          class="col-3">
         <img style="margin-top: 50px; border: 1px solid;"
@@ -14,7 +14,8 @@
                  [nzHoverable]="true"
                  [nzBordered]="true"
                  [nzTitle]="review?.title"
-                 [nzExtra]="extraTemplate">
+                 [nzExtra]="extraTemplate"
+                 (click)="onClickReview(review)">
 
             <div style="display: flex;justify-content: space-between; align-items: center;">
                 <div style="text-align: center;">
@@ -35,6 +36,8 @@
                 <nz-rate [ngModel]="review.rate"
                          nzDisabled></nz-rate>
             </ng-template>
+            <p style="text-align: end; padding: 10px;">Tamamını okumak için karta tıklayın.</p>
         </nz-card>
     </div>
 </div>
+<internhub-expand-review [config]="reviewModal"></internhub-expand-review>

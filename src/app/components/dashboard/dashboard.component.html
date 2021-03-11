@@ -2,6 +2,8 @@
     <nz-input-group [nzSuffix]="suffixIconSearch">
         <input type="text"
                nz-input
+               (keyup)="search()"
+               [(ngModel)]="searchValue"
                placeholder="Şirket ara" />
     </nz-input-group>
     <ng-template #suffixIconSearch>
@@ -16,8 +18,13 @@
         <a [routerLink]="'/company/'+company.companyId">
             <internhub-company-card [name]="company.name"
                                     [city]="company.city"
-                                    [rate]="company.rate"
                                     [logoUrl]="company.logoUrl"></internhub-company-card>
         </a>
     </div>
 </div>
+<!-- <div *ngFor="let result of results |async">
+    {{result.name}}
+</div>
+<div>
+    q
+</div> -->

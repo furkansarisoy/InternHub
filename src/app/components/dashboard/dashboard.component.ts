@@ -15,10 +15,12 @@ import { CompanyService } from 'src/app/shared/services/company-service/company.
 })
 export class DashboardComponent implements OnInit {
 
+  searchValue: string = "";
+  results: any;
   companies: Company[];
   subscription: Subscription;
 
-  constructor(private companyService: CompanyService) { }
+  constructor(private companyService: CompanyService, private angularFirestore: AngularFirestore) { }
 
   ngOnInit(): void {
     this.getData();
@@ -30,4 +32,12 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  search() {
+    this.results = this.angularFirestore.collection(`companies`, ref => ref
+      .orderBy("name")
+      .startAt(this.searchValue.toLocaleLowerCase())
+      .endAt(this.searchValue.toLocaleLowerCase() + "\uf8ff")
+      .limit(10))
+      .valueChanges();
+  }
 }
