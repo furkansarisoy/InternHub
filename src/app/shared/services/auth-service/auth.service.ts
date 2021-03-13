@@ -90,6 +90,7 @@ export class AuthService {
       lastName: userCredential.lastName,
       photoURL: userCredential.photoURL ? userCredential.photoURL : "",
       school: userCredential.school,
+      faculty: userCredential.faculty,
       department: userCredential.department,
       city: userCredential.city
     }

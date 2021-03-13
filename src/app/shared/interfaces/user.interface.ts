@@ -4,6 +4,7 @@ export interface User {
     firstName?: string;
     lastName?: string;
     school?: string;
+    faculty?: string;
     department?: string;
     city?: string;
     photoURL?: string;

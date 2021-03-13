@@ -40,10 +40,29 @@
                     <nz-select nzShowSearch
                                nzAllowClear
                                nzPlaceHolder="Okulunuzu seçiniz"
-                               formControlName="school">
+                               formControlName="school"
+                               [(ngModel)]="selectedUniversity"
+                               (ngModelChange)="onSchoolChange()">
                         <nz-option *ngFor="let university of universities"
                                    [nzLabel]="university.name"
-                                   [nzValue]="university.name"></nz-option>
+                                   [nzValue]="university"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="faculty">Fakülte</nz-form-label>
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Fakültenizi seçiniz"
+                               formControlName="faculty"
+                               [(ngModel)]="selectedFaculty"
+                               (ngModelChange)="onFacultyChange()">
+                        <nz-option *ngFor="let faculty of selectedUniversity?.faculties"
+                                   [nzLabel]="faculty.name"
+                                   [nzValue]="faculty"></nz-option>
                     </nz-select>
                 </nz-form-control>
             </nz-form-item>
@@ -52,9 +71,15 @@
                                  [nzErrorTip]="errorTpl">
                     <nz-form-label nzRequired
                                    nzFor="department">Bölüm</nz-form-label>
-                    <input nz-input
-                           formControlName="department"
-                           type="text" />
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Okuduğunuz bölümü seçiniz"
+                               formControlName="department"
+                               [(ngModel)]="selectedDepartment">
+                        <nz-option *ngFor="let department of selectedFaculty?.departments"
+                                   [nzLabel]="department"
+                                   [nzValue]="department"></nz-option>
+                    </nz-select>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
@@ -62,9 +87,14 @@
                                  [nzErrorTip]="errorTpl">
                     <nz-form-label nzRequired
                                    nzFor="city">Yaşadığınız şehir</nz-form-label>
-                    <input nz-input
-                           formControlName="city"
-                           type="text" />
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Yaşadığınız şehri seçiniz"
+                               formControlName="city">
+                        <nz-option *ngFor="let city of cities"
+                                   [nzLabel]="city.name.toLowerCase()"
+                                   [nzValue]="city.name.toLowerCase()"></nz-option>
+                    </nz-select>
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>

@@ -6,12 +6,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  private _jsonURL = 'assets/univ.json';
+  private _uniURL = 'assets/univ.json';
+  private _cityURL = 'assets/il-ilce.json';
+
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public getJSON(): Observable<any> {
-    return this.httpClient.get(this._jsonURL);
+  public getUniversitesJSON(): Observable<any> {
+    return this.httpClient.get(this._uniURL);
+  }
+
+  public getCitiesJSON(): Observable<any> {
+    return this.httpClient.get(this._cityURL);
   }
 }

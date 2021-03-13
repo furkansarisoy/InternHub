@@ -21,7 +21,12 @@ export class FirstLoginComponent implements OnInit {
   url;
   downloadURL: Observable<string>;
 
+  selectedUniversity;
+  selectedFaculty;
+  selectedDepartment;
+
   universities;
+  cities;
   userCredential: User = {
     uid: "",
     email: "",
@@ -44,9 +49,12 @@ export class FirstLoginComponent implements OnInit {
     private dataService: DataService,
     private angularFireStorage: AngularFireStorage,
     private angularFirestore: AngularFirestore) {
-    this.dataService.getJSON().subscribe(data => {
+    this.dataService.getUniversitesJSON().subscribe(data => {
       this.universities = data;
-    })
+    });
+    this.dataService.getCitiesJSON().subscribe(data => {
+      this.cities = data;
+    });
   }
 
   ngOnInit(): void {
@@ -54,6 +62,7 @@ export class FirstLoginComponent implements OnInit {
       name: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
       school: ['', [Validators.required]],
+      faculty: ['', [Validators.required]],
       department: ['', [Validators.required]],
       city: ['', [Validators.required]],
       photoURL: ['']
@@ -62,6 +71,15 @@ export class FirstLoginComponent implements OnInit {
 
   ngOnChanges(): void {
 
+  }
+
+  onSchoolChange() {
+    this.selectedFaculty = null;
+    this.selectedDepartment = null;
+  }
+
+  onFacultyChange() {
+    this.selectedDepartment = null;
   }
 
   handleCancel() {
@@ -98,7 +116,8 @@ export class FirstLoginComponent implements OnInit {
     this.userCredential.email = this.modalData.data.email;
     this.userCredential.firstName = this.credentialForm.value.name;
     this.userCredential.lastName = this.credentialForm.value.lastName;
-    this.userCredential.school = this.credentialForm.value.school;
+    this.userCredential.school = this.credentialForm.value.school.name;
+    this.userCredential.faculty = this.credentialForm.value.faculty.name;
     this.userCredential.department = this.credentialForm.value.department;
     this.userCredential.city = this.credentialForm.value.city;
     this.userCredential.photoURL = this.url;

@@ -29,22 +29,34 @@
                 </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-                <nz-form-label nzFor="district">Bulunduğu İlçe</nz-form-label>
-                <input nz-input
-                       formControlName="district"
-                       type="text" />
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="district">Bulunduğu İlçe</nz-form-label>
+                    <input nz-input
+                           formControlName="district"
+                           type="text" />
+                </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-                <nz-form-label nzFor="email">Email Adresi</nz-form-label>
-                <input nz-input
-                       formControlName="email"
-                       type="email" />
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="email">Email Adresi</nz-form-label>
+                    <input nz-input
+                           formControlName="email"
+                           type="email" />
+                </nz-form-control>
             </nz-form-item>
             <nz-form-item>
-                <nz-form-label nzFor="phone">Telefon Numarası</nz-form-label>
-                <input nz-input
-                       formControlName="phone"
-                       type="tel" />
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="phone">Telefon Numarası</nz-form-label>
+                    <input nz-input
+                           formControlName="phone"
+                           type="tel" />
+                </nz-form-control>
             </nz-form-item>
             <nz-form-item>
                 <nz-form-label nzFor="logoUrl">Profil Fotoğrafı</nz-form-label>

@@ -20,7 +20,7 @@ export class ReviewService {
     const reviewRef: AngularFirestoreDocument<any> = this.angularFirestore.doc(`reviews/${id}`);
     const reviewData: Review = {
       reviewId: id,
-      companyId: form.company.companyId,
+      companyData: form.company,
       uid: credential.uid,
       title: form.title,
       applyType: form.applyType,
@@ -42,7 +42,7 @@ export class ReviewService {
   }
 
   getReviewsByCompanyId(companyId: string) {
-    return this.angularFirestore.collection<Review>('reviews', ref => ref.where('companyId', '==', companyId)).valueChanges();
+    return this.angularFirestore.collection<Review>('reviews', ref => ref.where('companyData.companyId', '==', companyId)).valueChanges();
   }
 
   getReviewsByUserId(userId: string) {

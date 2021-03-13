@@ -66,7 +66,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   onClickReview(event) {
-    console.log(event);
     this.reviewModal.data = event;
     this.reviewModal.visible = true;
   }

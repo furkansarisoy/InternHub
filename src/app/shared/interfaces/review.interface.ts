@@ -2,7 +2,7 @@ import { DocumentData } from "@angular/fire/firestore";
 
 export interface Review {
     reviewId?: string;
-    companyId?: string;
+    companyData?: DocumentData;
     uid?: string;
     title?: string;
     applyType: string;

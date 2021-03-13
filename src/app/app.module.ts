@@ -60,6 +60,7 @@ import { NewCompanyComponent } from './components/new-review/new-company/new-com
 import { ExpandReviewComponent } from './components/company/expand-review/expand-review.component';
 
 import { FilterCompaniesPipe } from './shared/pipes/filterCompanies.pipe';
+import { ExpandProfileReviewComponent } from './components/user-profile/expand-profile-review/expand-profile-review.component';
 
 
 registerLocaleData(tr);
@@ -84,7 +85,8 @@ registerLocaleData(tr);
     NewReviewComponent,
     NewCompanyComponent,
     ExpandReviewComponent,
-    FilterCompaniesPipe
+    FilterCompaniesPipe,
+    ExpandProfileReviewComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

@@ -8,8 +8,13 @@
                        [nzSrc]="userCredential?.photoURL"
                        style="margin-top: 20px;"></nz-avatar>
             <h2 style="margin-top: 25px;"> {{userCredential?.firstName}} {{userCredential?.lastName}} </h2>
-            <h4> {{userCredential?.city}} </h4>
+            <h5> {{userCredential?.city.toUpperCase()}} </h5>
+            <h6> {{userCredential?.school}} </h6>
+            <h6> {{userCredential?.faculty}} </h6>
+            <h6> {{userCredential?.department}} </h6>
+            <i> {{userCredential?.email}} </i>
         </div>
+
         <div class="row col-sm-12 col-lg-8 col-xl-9 m-0 mt-5">
             <div *ngFor="let review of reviews"
                  class="col-sm-12 col-xl-6">
@@ -20,14 +25,14 @@
                          [nzExtra]="extraTemplate"
                          (click)="onClickReview(review)">
 
-                    <div style="display: flex;justify-content: space-between; align-items: center;">
+                    <div style="display: flex;justify-content: space-around; align-items: center;">
                         <div style="text-align: center;">
                             <nz-avatar nzIcon="user"
                                        [nzSize]="70"
-                                       [nzSrc]="review.userData.photoURL"></nz-avatar>
-                            <h6><b> {{review.userData.firstName}} {{review.userData.lastName}} </b></h6>
-                            <i> {{review.userData.school}} </i><br>
-                            <i> {{review.userData.department}} </i>
+                                       [nzSrc]="review.companyData?.logoUrl"></nz-avatar>
+                            <h6><b> {{review.companyData?.name}}</b></h6>
+                            <i> {{review.companyData?.city}} - {{review.companyData?.district}} </i><br>
+                            <i> {{review.companyData?.email}} </i>
                         </div>
                         <div>
                             <p><b>Staja alım tipi:</b> {{ review?.applyType }}</p>
@@ -44,5 +49,5 @@
             </div>
         </div>
     </div>
-    <internhub-expand-review [config]="reviewModal"></internhub-expand-review>
+    <internhub-expand-profile-review [config]="reviewModal"></internhub-expand-profile-review>
 </div>
