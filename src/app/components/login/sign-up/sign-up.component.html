@@ -8,6 +8,7 @@
                          [nzErrorTip]="emailErrorTpl">
             <nz-input-group nzPrefixIcon="mail">
                 <input nz-input
+                       pattern="[a-z.0-9]*[@][a-z.]*[.]edu.tr"
                        formControlName="email"
                        placeholder="Mail adresinizi giriniz" />
                 <ng-template #emailErrorTpl
@@ -15,8 +16,8 @@
                     <ng-container *ngIf="control.hasError('required')">
                         Bu alanın doldurulması zorunludur!
                     </ng-container>
-                    <ng-container *ngIf="control.hasError('email')">
-                        Lütfen geçerli bir email giriniz!
+                    <ng-container *ngIf="control.hasError('pattern')">
+                        Lütfen edu.tr uzantılı bir mail adresi giriniz.
                     </ng-container>
                     <ng-container *ngIf="control.hasError('duplicated')">
                         Email kullanılıyor!
