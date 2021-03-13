@@ -1,4 +1,4 @@
-<nz-card style="width:250px; border-radius: 20px;"
+<nz-card style="width:250px; height: 350px; border-radius: 20px;"
          [nzCover]="coverTemplate"
          [nzHoverable]="true">
     <nz-card-meta [nzTitle]="name"
@@ -7,7 +7,8 @@
 
 <ng-template #coverTemplate>
     <ng-container *ngIf="logoUrl">
-        <img [src]="logoUrl" />
+        <img [src]="logoUrl"
+             style="width: 250px; height: 250px; " />
     </ng-container>
     <ng-container *ngIf="!logoUrl">
         <img

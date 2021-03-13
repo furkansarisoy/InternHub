@@ -74,9 +74,12 @@ export class NewCompanyComponent implements OnInit {
         .then(() => {
           this.nzNotificationService.success("Şirket Oluşturuldu!", `${this.companyForm.value.name} isimli şirket başarı ile oluşturuldu.`);
           this.modalData.visible = false;
+          this.companyForm.reset();
         }).catch(error => {
           this.nzNotificationService.error("Hata!", "Şirket oluşturulken bir hata meydana geldi : " + error);
           this.modalData.visible = false;
+          this.companyForm.reset();
+
         });
     }
   }

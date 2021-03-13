@@ -4,8 +4,8 @@
           [nzFooter]="btnTmpl"
           (nzOnCancel)="handleOkMiddle()">
     <ng-container *ngIf="config.visible">
-        <div style="display: flex;justify-content: space-around; align-items: center;">
-            <div style="text-align: center; cursor: pointer;"
+        <div class="review-card">
+            <div class="card-content"
                  (click)="onClickUserProfile(config.data?.userData?.uid)">
                 <nz-avatar nzIcon="user"
                            [nzSize]="70"

@@ -1,13 +1,12 @@
-<div class="wrapper"
-     style="height:100%;">
+<div class="wrapper">
     <div class="h-100 w-100 row">
         <div class="col-sm-12 col-lg-4 col-xl-3"
-             style="text-align: center;">
+             class="avatar-wrapper">
             <nz-avatar nzIcon="user"
+                       class="avatar-profile"
                        [nzSize]="250"
-                       [nzSrc]="userCredential?.photoURL"
-                       style="margin-top: 20px;"></nz-avatar>
-            <h2 style="margin-top: 25px;"> {{userCredential?.firstName}} {{userCredential?.lastName}} </h2>
+                       [nzSrc]="userCredential?.photoURL"></nz-avatar>
+            <h2> {{userCredential?.firstName}} {{userCredential?.lastName}} </h2>
             <h5> {{userCredential?.city.toUpperCase()}} </h5>
             <h6> {{userCredential?.school}} </h6>
             <h6> {{userCredential?.faculty}} </h6>
@@ -18,15 +17,15 @@
         <div class="row col-sm-12 col-lg-8 col-xl-9 m-0 mt-5">
             <div *ngFor="let review of reviews"
                  class="col-sm-12 col-xl-6">
-                <nz-card style="margin-bottom: 15px;"
+                <nz-card class="review-card-margin"
                          [nzHoverable]="true"
                          [nzBordered]="true"
                          [nzTitle]="review?.title"
                          [nzExtra]="extraTemplate"
                          (click)="onClickReview(review)">
 
-                    <div style="display: flex;justify-content: space-around; align-items: center;">
-                        <div style="text-align: center;">
+                    <div class="review-card">
+                        <div class="review-card-content">
                             <nz-avatar nzIcon="user"
                                        [nzSize]="70"
                                        [nzSrc]="review.companyData?.logoUrl"></nz-avatar>
@@ -44,7 +43,7 @@
                         <nz-rate [ngModel]="review.rate"
                                  nzDisabled></nz-rate>
                     </ng-template>
-                    <p style="text-align: end;">Tamamını okumak için karta tıklayın.</p>
+                    <p class="expand-card-info">Tamamını okumak için karta tıklayın.</p>
                 </nz-card>
             </div>
         </div>

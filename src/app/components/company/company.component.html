@@ -1,17 +1,17 @@
-<div class="wrapper"
-     style="height: 100%;">
+<div class="wrapper">
     <div class="h-100 w-100 row">
         <div class="col-sm-12 col-lg-4 col-xl-3"
              style="text-align: center">
             <nz-avatar *ngIf="company?.logoUrl"
+                       class="company-logo"
                        [nzSize]="250"
-                       [nzSrc]="company?.logoUrl"
-                       style="margin-top: 20px;"></nz-avatar>
+                       [nzSrc]="company?.logoUrl"></nz-avatar>
             <nz-avatar *ngIf="!company?.logoUrl"
+                       class="company-logo"
                        [nzSize]="250"
-                       nzSrc="https://static.licdn.com/sc/p/com.linkedin.organization-guest-frontend%3Aorganization-guest-frontend-static-content%2B0.1.345/f/%2Forganization-guest-frontend%2Fimages%2Foverview%2Fcompany-logo-ghost.png"
-                       style="margin-top: 20px;"></nz-avatar>
-            <h2 style="margin-top: 25px;"> {{company?.name}} </h2>
+                       nzSrc="https://static.licdn.com/sc/p/com.linkedin.organization-guest-frontend%3Aorganization-guest-frontend-static-content%2B0.1.345/f/%2Forganization-guest-frontend%2Fimages%2Foverview%2Fcompany-logo-ghost.png">
+            </nz-avatar>
+            <h2> {{company?.name}} </h2>
             <h5> {{company?.city}} - {{company?.district}} </h5>
             <h6> {{company?.email}} </h6>
             <h6> {{company?.phone}} </h6>
@@ -19,14 +19,14 @@
         <div class="row col-sm-12 col-lg-8 col-xl-9 m-0 mt-5">
             <div *ngFor="let review of reviews"
                  class="col-sm-12 col-xl-6">
-                <nz-card style="margin-bottom: 15px;"
+                <nz-card class="review-card"
                          [nzHoverable]="true"
                          [nzBordered]="true"
                          [nzTitle]="review?.title"
                          [nzExtra]="extraTemplate"
                          (click)="onClickReview(review)">
 
-                    <div style="display: flex;justify-content: space-between; align-items: center;">
+                    <div class="card-content">
                         <div style="text-align: center;">
                             <nz-avatar nzIcon="user"
                                        [nzSize]="70"
@@ -44,7 +44,7 @@
                         <nz-rate [ngModel]="review.rate"
                                  nzDisabled></nz-rate>
                     </ng-template>
-                    <p style="text-align: end;">Tamamını okumak için karta tıklayın.</p>
+                    <p class="view-all-info">Tamamını okumak için karta tıklayın.</p>
                 </nz-card>
             </div>
         </div>
