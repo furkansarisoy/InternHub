@@ -1,0 +1,51 @@
+<div class="wrapper h-100">
+    <div class="h-100 w-100 row">
+        <div class="col-sm-12 col-lg-4 col-xl-3 avatar-wrapper">
+            <nz-avatar nzIcon="user"
+                       class="avatar-profile"
+                       [nzSize]="250"
+                       [nzSrc]="userCredential?.photoURL"></nz-avatar>
+            <h2> {{userCredential?.firstName}} {{userCredential?.lastName}} </h2>
+            <h5> {{userCredential?.city.toUpperCase()}} </h5>
+            <h6> {{userCredential?.school}} </h6>
+            <h6> {{userCredential?.faculty}} </h6>
+            <h6> {{userCredential?.department}} </h6>
+            <i> {{userCredential?.email}} </i>
+        </div>
+
+        <div class="row col-sm-12 col-lg-8 col-xl-9 m-0 mt-5">
+            <div *ngFor="let review of reviews"
+                 class="col-sm-12 col-xl-6">
+                <nz-card class="review-card-margin"
+                         [nzHoverable]="true"
+                         [nzBordered]="true"
+                         [nzTitle]="review?.title"
+                         [nzExtra]="extraTemplate"
+                         (click)="onClickReview(review)">
+
+                    <div class="review-card">
+                        <div class="review-card-content">
+                            <nz-avatar nzIcon="user"
+                                       [nzSize]="70"
+                                       [nzSrc]="review.companyData?.logoUrl"></nz-avatar>
+                            <h6><b> {{review.companyData?.name}}</b></h6>
+                            <i> {{review.companyData?.city}} - {{review.companyData?.district}} </i><br>
+                            <i> {{review.companyData?.email}} </i>
+                        </div>
+                        <div>
+                            <p><b>Staja alım tipi:</b> {{ review?.applyType }}</p>
+                            <p> <b>Staj için ödeme yapıldı mı?</b> {{ review?.isPay }}</p>
+                            <p><b>Çalışan sayısı:</b> {{ review?.employeeCount }}</p>
+                        </div>
+                    </div>
+                    <ng-template #extraTemplate>
+                        <nz-rate [ngModel]="review.rate"
+                                 nzDisabled></nz-rate>
+                    </ng-template>
+                    <p class="expand-card-info">Tamamını okumak için karta tıklayın.</p>
+                </nz-card>
+            </div>
+        </div>
+    </div>
+    <internhub-expand-profile-review [config]="reviewModal"></internhub-expand-profile-review>
+</div>

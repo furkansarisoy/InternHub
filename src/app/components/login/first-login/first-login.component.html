@@ -1,0 +1,129 @@
+<nz-modal [(nzVisible)]="modalData.visible"
+          nzTitle="The first Modal"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="onSubmit()">
+    <ng-container *nzModalContent>
+        <h3>Internhub'a hoşgeldiniz.</h3>
+        <br />
+        <h4>Son bir adım kaldı...</h4>
+        <hr />
+        <form nz-form
+              [formGroup]="credentialForm"
+              (ngSubmit)="onSubmit()">
+
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="name">Adınız</nz-form-label>
+                    <input nz-input
+                           formControlName="name"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="lastName">Soyadınız</nz-form-label>
+
+                    <input nz-input
+                           formControlName="lastName"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="school">Okul</nz-form-label>
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Okulunuzu seçiniz"
+                               formControlName="school"
+                               [(ngModel)]="selectedUniversity"
+                               (ngModelChange)="onSchoolChange()">
+                        <nz-option *ngFor="let university of universities"
+                                   [nzLabel]="university.name"
+                                   [nzValue]="university"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="faculty">Fakülte</nz-form-label>
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Fakültenizi seçiniz"
+                               formControlName="faculty"
+                               [(ngModel)]="selectedFaculty"
+                               (ngModelChange)="onFacultyChange()">
+                        <nz-option *ngFor="let faculty of selectedUniversity?.faculties"
+                                   [nzLabel]="faculty.name"
+                                   [nzValue]="faculty"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="department">Bölüm</nz-form-label>
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Okuduğunuz bölümü seçiniz"
+                               formControlName="department"
+                               [(ngModel)]="selectedDepartment">
+                        <nz-option *ngFor="let department of selectedFaculty?.departments"
+                                   [nzLabel]="department"
+                                   [nzValue]="department"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="city">Yaşadığınız şehir</nz-form-label>
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Yaşadığınız şehri seçiniz"
+                               formControlName="city">
+                        <nz-option *ngFor="let city of cities"
+                                   [nzLabel]="city.name.toLowerCase()"
+                                   [nzValue]="city.name.toLowerCase()"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzFor="photoURL">Profil Fotoğrafı</nz-form-label>
+                    <div class="form-group col-12">
+                        <input type="file"
+                               id="file"
+                               #userPhoto
+                               (change)="upload($event)"
+                               name="image"
+                               autocomplete="off"
+                               formControlName="photoUrl" />
+                    </div>
+                    <div>
+                        <img *ngIf="url"
+                             [src]="url"
+                             width="50px">
+                    </div>
+                </nz-form-control>
+            </nz-form-item>
+        </form>
+    </ng-container>
+</nz-modal>
+
+<ng-template #errorTpl
+             let-control>
+    <ng-container *ngIf="control.hasError('required')">
+        Bu alanın doldurulması zorunludur!
+    </ng-container>
+</ng-template>

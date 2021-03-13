@@ -1,0 +1,49 @@
+<form nz-form
+      [formGroup]="signInForm"
+      (ngSubmit)="onSubmit()">
+
+    <nz-form-item>
+        <nz-form-control nzHasFeedback
+                         [nzErrorTip]="emailErrorTpl">
+            <nz-input-group nzPrefixIcon="mail">
+                <input nz-input
+                       pattern="[a-z.0-9]*[@][a-z.]*[.]edu.tr"
+                       formControlName="email"
+                       placeholder="Mail adresinizi giriniz"
+                       type="email" />
+                <ng-template #emailErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                        Lütfen edu.tr uzantılı bir mail adresi giriniz.
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzHasFeedback
+                         [nzErrorTip]="passwordErrorTpl">
+            <nz-input-group nzPrefixIcon="lock">
+                <input nz-input
+                       placeholder="Şifrenizi giriniz"
+                       type="password"
+                       formControlName="password" />
+                <ng-template #passwordErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+
+    <nz-form-item>
+        <nz-form-control>
+            <internhub-button-blop [title]="'Giriş Yap'"></internhub-button-blop>
+        </nz-form-control>
+    </nz-form-item>
+</form>

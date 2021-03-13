@@ -1,0 +1,76 @@
+<form nz-form
+      [formGroup]="signUpForm"
+      (ngSubmit)="onSubmit()">
+
+    <nz-form-item>
+        <nz-form-control nzHasFeedback
+                         nzValidatingTip="Kontrol ediliyor..."
+                         [nzErrorTip]="emailErrorTpl">
+            <nz-input-group nzPrefixIcon="mail">
+                <input nz-input
+                       pattern="[a-z.0-9]*[@][a-z.]*[.]edu.tr"
+                       formControlName="email"
+                       placeholder="Mail adresinizi giriniz" />
+                <ng-template #emailErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('pattern')">
+                        Lütfen edu.tr uzantılı bir mail adresi giriniz.
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('duplicated')">
+                        Email kullanılıyor!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control nzHasFeedback
+                         [nzErrorTip]="passwordErrorTpl">
+            <nz-input-group nzPrefixIcon="lock">
+                <input nz-input
+                       placeholder="Şifrenizi giriniz"
+                       type="password"
+                       formControlName="password" />
+                <ng-template #passwordErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('min')">
+                        Şifreniz 6 karakterden kısa olamaz!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+
+        <nz-form-control nzHasFeedback
+                         [nzErrorTip]="confirmErrorTpl">
+            <nz-input-group nzPrefixIcon="lock">
+                <input nz-input
+                       type="password"
+                       formControlName="confirm"
+                       placeholder="Şifrenizi tekrar giriniz" />
+                <ng-template #confirmErrorTpl
+                             let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        Bu alanın doldurulması zorunludur!
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('confirm')">
+                        Şifreler uyuşmuyor!
+                    </ng-container>
+                </ng-template>
+            </nz-input-group>
+        </nz-form-control>
+    </nz-form-item>
+    <nz-form-item>
+        <nz-form-control>
+            <internhub-button-blop [title]="'Kayıt Ol'"></internhub-button-blop>
+        </nz-form-control>
+    </nz-form-item>
+</form>
+<internhub-first-login [modalData]="userProfileModal"></internhub-first-login>

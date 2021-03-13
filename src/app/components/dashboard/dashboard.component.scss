@@ -1,0 +1,30 @@
+.companies {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    .company {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+}
+
+.input-label {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #707070;
+}
+
+@media screen and (max-width: 1200px) {
+    .companies {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media screen and (max-width: 570px) {
+    .companies {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

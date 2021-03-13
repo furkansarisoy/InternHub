@@ -1,0 +1,102 @@
+<div class="wrapper"
+     style="height: 100%;">
+    <div class="container">
+        <form nz-form
+              nzLayout="vertical"
+              [formGroup]="reviewForm"
+              (ngSubmit)="onSubmit()">
+
+
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="title">Yorumunuz için bir başlık giriniz.
+                    </nz-form-label>
+                    <input nz-input
+                           formControlName="title"
+                           type="text" />
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="company">Bir şirket seçiniz. Eğer çalıştığınız şirket listede yoksa lütfen
+                        yeni
+                        bir
+                        şirket ekleyiniz. </nz-form-label>
+                    <button style="margin: 10px;"
+                            nz-button
+                            nz-type="dashed"
+                            (click)="openModal()">
+                        Yeni Şirket Ekle
+                    </button>
+                    <nz-select nzShowSearch
+                               nzAllowClear
+                               nzPlaceHolder="Şirket seçiniz"
+                               formControlName="company">
+                        <nz-option *ngFor="let company of companies"
+                                   [nzLabel]="company.name"
+                                   [nzValue]="company"></nz-option>
+                    </nz-select>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-control nzHasFeedback
+                                 [nzErrorTip]="errorTpl">
+                    <nz-form-label nzRequired
+                                   nzFor="rate">Staj deneyiminize kaç puan verirsiniz ?</nz-form-label>
+                    <div>
+                        <nz-rate formControlName="rate"></nz-rate>
+                    </div>
+                </nz-form-control>
+            </nz-form-item>
+            <nz-form-item>
+
+                <nz-form-label nzFor="applyType">Staja kabulunuz nasıl gerçekleşti? (Mülakat, yazılı sınav vs.)
+                </nz-form-label>
+                <input nz-input
+                       formControlName="applyType"
+                       type="text" />
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzFor="isPay">Staj yaptığınız yerden herhangi bir ödeme aldınız mı ? </nz-form-label>
+                <nz-radio-group formControlName="isPay">
+                    <label nz-radio
+                           nzValue="Evet">Ödeme yapıldı</label>
+                    <label nz-radio
+                           nzValue="Hayır">Ödeme yapılmadı</label>
+                    <label nz-radio
+                           nzValue="Belirtilmedi">Belirtmek istemiyorum</label>
+                </nz-radio-group>
+            </nz-form-item>
+            <nz-form-item>
+                <nz-form-label nzFor="employeeCount">Staj yerinizdeki toplam kaç yazılımcı çalışıyordu ?</nz-form-label>
+                <input nz-input
+                       formControlName="employeeCount"
+                       type="number" />
+            </nz-form-item>
+            <nz-form-item>
+
+                <nz-form-label nzFor="extra">Ek olarak vermek istediğiniz bir bilgi varsa bu alana girebilirsiniz.
+                </nz-form-label>
+                <textarea rows="4"
+                          nz-input
+                          formControlName="extra"></textarea>
+            </nz-form-item>
+            <button nz-button
+                    type="submit"
+                    nz-type="primary">Kaydet</button>
+            <ng-template #errorTpl
+                         let-control>
+                <ng-container *ngIf="control.hasError('required')">
+                    Bu alanın doldurulması zorunludur!
+                </ng-container>
+            </ng-template>
+        </form>
+
+    </div>
+
+    <internhub-new-company [modalData]="modalData"></internhub-new-company>
+</div>

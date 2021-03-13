@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
-  selector: 'app-root',
+  selector: 'internhub-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'intern-hub';
+
+  constructor(private angularFirestore: AngularFireStorage) { }
 }

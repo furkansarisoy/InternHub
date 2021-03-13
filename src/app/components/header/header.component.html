@@ -1,0 +1,49 @@
+<nav class="navbar navbar-light justify-content-between p-5">
+    <div style="display: flex; flex-direction: row;">
+        <a class="navbar-brand"
+           routerLink="/homepage">Internhub</a>
+
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-5"
+            style="flex-direction: row;">
+            <li class="nav-item mr-4">
+                <a class="nav-link active"
+                   routerLink="/homepage">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active"
+                   routerLink="/dashboard">Dashboard</a>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="user">
+        <button nz-button
+                nzSize="small"
+                nzType="dashed"
+                (click)="onClickNewReview()">Yorum Yap</button>
+        <i nz-icon
+           nzType="user"
+           nzTheme="outline"
+           style="margin-left: 15px; cursor: pointer;"
+           nz-dropdown
+           [nzDropdownMenu]="menu"
+           nzTrigger="click"></i>
+    </div>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+        <ul nz-menu
+            nzSelectable
+            (click)="onClickShowProfile()">
+            <li nz-menu-item>
+                <i nz-icon
+                   nzType="user"
+                   nzTheme="outline"></i> Profilimi Görüntüle
+            </li>
+            <li nz-menu-item
+                (click)="signOut()">
+                <i nz-icon
+                   nzType="poweroff"
+                   nzTheme="outline"></i>
+                Çıkış Yap
+            </li>
+        </ul>
+    </nz-dropdown-menu>
+</nav>

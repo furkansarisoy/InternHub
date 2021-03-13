@@ -1,0 +1,17 @@
+<nz-card style="width:250px; height: 350px; border-radius: 20px;"
+         [nzCover]="coverTemplate"
+         [nzHoverable]="true">
+    <nz-card-meta [nzTitle]="name"
+                  [nzDescription]="city"></nz-card-meta>
+</nz-card>
+
+<ng-template #coverTemplate>
+    <ng-container *ngIf="logoUrl">
+        <img [src]="logoUrl"
+             style="width: 250px; height: 250px; " />
+    </ng-container>
+    <ng-container *ngIf="!logoUrl">
+        <img
+             src="https://static.licdn.com/sc/p/com.linkedin.organization-guest-frontend%3Aorganization-guest-frontend-static-content%2B0.1.345/f/%2Forganization-guest-frontend%2Fimages%2Foverview%2Fcompany-logo-ghost.png">
+    </ng-container>
+</ng-template>

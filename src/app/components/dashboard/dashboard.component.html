@@ -1,0 +1,33 @@
+<div class="wrapper"
+     style="height: 100%;">
+    <div style="margin: 120px 50px 100px 50px"
+         class="row">
+        <span class="col input-label">Arama çubuğunu kullanarak, aradığın şirketi bulabilirsin.</span>
+        <nz-input-group class="col"
+                        style="border-radius: 30px; height: 50px;"
+                        [nzSuffix]="suffixIconSearch">
+            <input type="text"
+                   nz-input
+                   (keyup)="search()"
+                   [(ngModel)]="searchValue"
+                   placeholder="Şirket ara" />
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+            <i nz-icon
+               nzType="search"
+               nzTheme="outline"></i>
+        </ng-template>
+    </div>
+    <div class="companies wrapper">
+        <div *ngFor="let company of companies | filterCompanies: searchValue"
+             class="company">
+            <a [routerLink]="'/company/'+company.companyId"
+               style="text-decoration: none;">
+                <internhub-company-card [name]="company.name"
+                                        [city]="company.city"
+                                        [logoUrl]="company.logoUrl"></internhub-company-card>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- <img src="../../../assets/q.jpg"> -->
