@@ -5,7 +5,8 @@
           (nzOnCancel)="handleOkMiddle()">
     <ng-container *ngIf="config.visible">
         <div style="display: flex;justify-content: space-around; align-items: center;">
-            <div style="text-align: center;">
+            <div style="text-align: center; cursor: pointer;"
+                 (click)="onClickUserProfile(config.data?.userData?.uid)">
                 <nz-avatar nzIcon="user"
                            [nzSize]="70"
                            [nzSrc]="config.data?.userData.photoURL"></nz-avatar>

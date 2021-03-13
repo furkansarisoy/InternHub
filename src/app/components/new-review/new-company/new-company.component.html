@@ -1,9 +1,9 @@
 <nz-modal [(nzVisible)]="modalData.visible"
-          nzTitle="The first Modal"
+          nzTitle="Yeni Şirket Ekle"
           (nzOnCancel)="handleCancel()"
           (nzOnOk)="onSubmit()">
     <ng-container *nzModalContent>
-        <h3>Aşağıdaki bilgileri doldurarak sisteme çalıştığınız yeri ekleyebilirsiniz.</h3>
+        <h5>Aşağıdaki bilgileri doldurarak sisteme çalıştığınız yeri ekleyebilirsiniz.</h5>
         <br />
         <form nz-form
               [formGroup]="companyForm"

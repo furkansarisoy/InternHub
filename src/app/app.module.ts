@@ -37,6 +37,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzRadioModule } from 'ng-zorro-antd/radio';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 
 // Component imports
 import { AppComponent } from './app.component';
@@ -110,7 +111,8 @@ registerLocaleData(tr);
     NzButtonModule,
     NzSelectModule,
     NzRadioModule,
-    NzUploadModule
+    NzUploadModule,
+    NzDropDownModule
   ],
   providers: [{ provide: NZ_I18N, useValue: tr_TR }, AuthService, { provide: Storage }],
   bootstrap: [AppComponent]

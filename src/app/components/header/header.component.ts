@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth-service/auth.service';
 export class HeaderComponent implements OnInit {
 
   user = false;
+  activeUser
   constructor(private angularFireAuth: AngularFireAuth,
     private AuthService: AuthService,
     private router: Router) { }
@@ -23,8 +24,10 @@ export class HeaderComponent implements OnInit {
     this.angularFireAuth.authState.subscribe(user => {
       if (user) {
         this.user = true;
+        this.activeUser = user;
       } else {
         this.user = false;
+        this.activeUser = null;
       }
     });
   }
@@ -34,6 +37,10 @@ export class HeaderComponent implements OnInit {
 
   signOut() {
     this.AuthService.signOut();
+  }
+
+  onClickShowProfile() {
+    this.router.navigate([`/profile/${this.activeUser.uid}`]);
   }
 
 }

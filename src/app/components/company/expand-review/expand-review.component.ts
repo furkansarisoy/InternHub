@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'internhub-expand-review',
@@ -8,7 +9,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ExpandReviewComponent implements OnInit {
 
   @Input() config;
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -18,4 +20,9 @@ export class ExpandReviewComponent implements OnInit {
     this.config.data = null;
   }
 
+  onClickUserProfile(uid: string) {
+    if (uid) {
+      this.router.navigate([`/profile/${uid}`]);
+    }
+  }
 }

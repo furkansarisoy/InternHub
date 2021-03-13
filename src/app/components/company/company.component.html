@@ -1,43 +1,53 @@
-<div class="row h-100">
-    <div style="text-align: center; border-right:1px solid; height: 100%;"
-         class="col-3">
-        <img style="margin-top: 50px; border: 1px solid;"
-             width="250px"
-             [src]="company?.logoUrl">
-        <h2 style="margin-top: 50px;"> {{company?.name}} </h2>
-        <h4> {{company?.city}} </h4>
-    </div>
-    <div class="col-9 row">
-        <nz-card *ngFor="let review of reviews"
-                 class="col-md-5"
-                 style="margin: 10px 40px; height: 250px;"
-                 [nzHoverable]="true"
-                 [nzBordered]="true"
-                 [nzTitle]="review?.title"
-                 [nzExtra]="extraTemplate"
-                 (click)="onClickReview(review)">
+<div class="wrapper"
+     style="height: 100%;">
+    <div class="h-100 w-100 row">
+        <div class="col-sm-12 col-lg-4 col-xl-3"
+             style="text-align: center">
+            <nz-avatar *ngIf="company?.logoUrl"
+                       [nzSize]="250"
+                       [nzSrc]="company?.logoUrl"
+                       style="margin-top: 20px;"></nz-avatar>
+            <nz-avatar *ngIf="!company?.logoUrl"
+                       [nzSize]="250"
+                       nzSrc="https://static.licdn.com/sc/p/com.linkedin.organization-guest-frontend%3Aorganization-guest-frontend-static-content%2B0.1.345/f/%2Forganization-guest-frontend%2Fimages%2Foverview%2Fcompany-logo-ghost.png"
+                       style="margin-top: 20px;"></nz-avatar>
+            <h2 style="margin-top: 25px;"> {{company?.name}} </h2>
+            <h5> {{company?.city}} - {{company?.district}} </h5>
+            <h6> {{company?.email}} </h6>
+            <h6> {{company?.phone}} </h6>
+        </div>
+        <div class="row col-sm-12 col-lg-8 col-xl-9 m-0 mt-5">
+            <div *ngFor="let review of reviews"
+                 class="col-sm-12 col-xl-6">
+                <nz-card style="margin-bottom: 15px;"
+                         [nzHoverable]="true"
+                         [nzBordered]="true"
+                         [nzTitle]="review?.title"
+                         [nzExtra]="extraTemplate"
+                         (click)="onClickReview(review)">
 
-            <div style="display: flex;justify-content: space-between; align-items: center;">
-                <div style="text-align: center;">
-                    <nz-avatar nzIcon="user"
-                               [nzSize]="70"
-                               [nzSrc]="review.userData.photoURL"></nz-avatar>
-                    <h6><b> {{review.userData.firstName}} {{review.userData.lastName}} </b></h6>
-                    <i> {{review.userData.school}} </i><br>
-                    <i> {{review.userData.department}} </i>
-                </div>
-                <div>
-                    <p><b>Staja alım tipi:</b> {{ review?.applyType }}</p>
-                    <p> <b>Staj için ödeme yapıldı mı?</b> {{ review?.isPay }}</p>
-                    <p><b>Çalışan sayısı:</b> {{ review?.employeeCount }}</p>
-                </div>
+                    <div style="display: flex;justify-content: space-between; align-items: center;">
+                        <div style="text-align: center;">
+                            <nz-avatar nzIcon="user"
+                                       [nzSize]="70"
+                                       [nzSrc]="review.userData.photoURL"></nz-avatar>
+                            <h6><b> {{review.userData.firstName}} {{review.userData.lastName}} </b></h6>
+                            <i> {{review.userData.school}} </i><br> <i> {{review.userData.department}} </i>
+                        </div>
+                        <div>
+                            <p><b>Staja alım tipi:</b> {{ review?.applyType }}</p>
+                            <p> <b>Staj için ödeme yapıldı mı?</b> {{ review?.isPay }}</p>
+                            <p><b>Çalışan sayısı:</b> {{ review?.employeeCount }}</p>
+                        </div>
+                    </div>
+                    <ng-template #extraTemplate>
+                        <nz-rate [ngModel]="review.rate"
+                                 nzDisabled></nz-rate>
+                    </ng-template>
+                    <p style="text-align: end;">Tamamını okumak için karta tıklayın.</p>
+                </nz-card>
             </div>
-            <ng-template #extraTemplate>
-                <nz-rate [ngModel]="review.rate"
-                         nzDisabled></nz-rate>
-            </ng-template>
-            <p style="text-align: end; padding: 10px;">Tamamını okumak için karta tıklayın.</p>
-        </nz-card>
+        </div>
     </div>
+    <internhub-expand-review [config]="reviewModal"></internhub-expand-review>
 </div>
-<internhub-expand-review [config]="reviewModal"></internhub-expand-review>

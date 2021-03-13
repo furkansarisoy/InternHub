@@ -9,6 +9,20 @@
     }
 }
 
+.input-label {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 28px;
+    color: #707070;
+}
+.wrapper {
+    background-image: url("../../../assets/q.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
 @media screen and (max-width: 1200px) {
     .companies {
         display: grid;

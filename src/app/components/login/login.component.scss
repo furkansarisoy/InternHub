@@ -15,13 +15,13 @@
 
 .login-area {
     background-color: rgb(250, 246, 246);
-    width: 55%;
-    height: 50%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 0 2em;
     border-radius: 10px;
     box-shadow: 0 0 5px;
+    padding: 0;
+    margin: 0;
 }
 
 .login-left {
@@ -29,6 +29,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    img {
+        width: 100%;
+    }
 }
 
 .login-right {
@@ -41,4 +44,13 @@
 .form-group {
     display: flex;
     flex-direction: column;
+}
+
+@media screen and (max-width: 640px) {
+    .login-area {
+        display: block;
+        .login-left {
+            display: none;
+        }
+    }
 }

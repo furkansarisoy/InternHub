@@ -45,4 +45,8 @@ export class ReviewService {
     return this.angularFirestore.collection<Review>('reviews', ref => ref.where('companyId', '==', companyId)).valueChanges();
   }
 
+  getReviewsByUserId(userId: string) {
+    return this.angularFirestore.collection<Review>('reviews', ref => ref.where('userData.uid', '==', userId)).valueChanges();
+  }
+
 }
