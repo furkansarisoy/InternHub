@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   { path: 'company/:id', component: CompanyComponent },
   { path: 'new-review', component: NewReviewComponent, canActivate: [AuthGuard] },
-  { path: 'profile/:id', component: UserProfileComponent }
+  { path: 'profile/:id', component: UserProfileComponent },
+  { path: '**', redirectTo: '/homepage' }
 ]
 
 @NgModule({
