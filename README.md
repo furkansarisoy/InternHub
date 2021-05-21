@@ -1,9 +1,9 @@
-# ![Tekirdağ_Namık_Kemal_Üniversitesi_Logosu](https://user-images.githubusercontent.com/59026931/111066773-cb5f8c00-84d1-11eb-918d-27a6fd6487f3.png) NKU Online Staj/STE Isyeri Bilgi Sistemi
+# InternHub
 
 
 ## Genel Bakış
 
-NKU Online Staj/STE Isyeri Bilgi Sistemi, üniversite öğrencilerinin stajlarını tamamlamaları ardından, staj yaptıkları iş yerleri hakkında bazı bilgileri girebilecekleri bir web uygulamasıdır. 
+InternHub, üniversite öğrencilerinin stajlarını tamamlamaları ardından, staj yaptıkları iş yerleri hakkında bazı bilgileri girebilecekleri bir web uygulamasıdır. 
 Staj yeri arayan ogrenciler sisteme daha once girilen bilgileri bu siteden inceleyebilecekler. Bu sayede kendilerine daha cok katki saglayabilecek bir staj is yeri bulma ihtimalleri artmis olacak.
 Proje Angular ve Firebase kullanılarak geliştirilmiştir.
 
