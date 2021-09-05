@@ -1,41 +1,41 @@
 # InternHub
 
 
-## Genel Bakış
+## Overview
 
-InternHub, üniversite öğrencilerinin stajlarını tamamlamaları ardından, staj yaptıkları iş yerleri hakkında bazı bilgileri girebilecekleri bir web uygulamasıdır. 
-Staj yeri arayan ogrenciler sisteme daha once girilen bilgileri bu siteden inceleyebilecekler. Bu sayede kendilerine daha cok katki saglayabilecek bir staj is yeri bulma ihtimalleri artmis olacak.
-Proje Angular ve Firebase kullanılarak geliştirilmiştir.
+InternHub is a web application where university students can enter some information about their internship places after completing their internship.
+Students looking for an internship place will be able to review the information previously entered into the system from this site. In this way, they will be more likely to find an internship workplace that can contribute more to them.
+The project is developed using Angular and Firebase.
 
-## Kurulum
-* Bilgisayarınızda node.js ve npm paket yükleyicisi kurulu olmalıdır.
-* Kaynak kodları indirdikten sonra kodların bulunduğu klasöre geçip, komut satırında sırayla:
+## Setup
+* You must have node.js and npm packaged on your computer.
+* After downloading the source codes, open a terminal and run the commands following  in root folder where the codes are located:
 1. ``` npm install ```
 
 2. ``` npm start ```
 
-  komutları çalıştırılmalıdır. Bu işlemlerin ardından site kullanıma hazır hale gelecektir. 
+After these processes, the site will be ready for use in localhost:4200.
 
-## Nasıl Çalışır?
+## How does it work ?
 
-#### Yeni Yorum Ekleme
+#### Adding a New Comment
 
-* Yorum eklemek için sisteme kayıtlı bir kullanıcı olmanız gerekmektedir.
-* Sisteme, sadece üniversitenize ait olan (edu.tr) uzantılı mail adresiniz ile kayıt olabilirsiniz.
-* Kayıt işleminden sonra, daha önceden oluşturulmuş şirketler karışınıza çıkacaktır.
-* Yeni bir yorum eklemek için sağ üstte bulunan *Yorum ekle* butonunu kullanılmalıdır.
-* Staj yaptığınız yer daha önceden sisteme eklenmediyse, iş yeri seçme alanının yanında bulunan *Yeni Şirket Ekle* butonuna tıklayarak şirket ekleme sayfasına geçebilirsiniz.
-* Şirket seçimi tamamlandıktan sonra gerekli alanlar doldurulur ve staj yorumunuz ilgili şirketin profil sayfasına kayıt edilir.
+* To add a comment, you must be a registered user in the system.
+* You can only register to the system with your e-mail address (edu.tr) that belongs to your university.
+* After registration, previously created companies will appear.
+* To add a new comment, the *Add comment* button at the top right should be used.
+* If your internship place has not been added to the system before, you can go to the company adding page by clicking the *Add New Company* button next to the workplace selection field.
+* After the company selection is completed, the required fields are filled and your internship comment is recorded on the profile page of the relevant company.
 
-#### Yorumları okuma
+#### Reading comments
 
-* Yorumları okumak için herhangi bir kayıt işlemine gerek yoktur. İstediğiniz şirketin sayfasına girebilir ve yorumları okuyabilirsiniz.
+* No registration is required to read comments. You can go to the page of the company you want and read the comments.
 
-## Site Arayüzü
+## UI
 
-![AnaSayfa](https://user-images.githubusercontent.com/59026931/111066628-0e6d2f80-84d1-11eb-94c1-604ceca1f3f4.png)
+![Homepage](https://user-images.githubusercontent.com/59026931/111066628-0e6d2f80-84d1-11eb-94c1-604ceca1f3f4.png)
 ![Auth](https://user-images.githubusercontent.com/59026931/111066635-12994d00-84d1-11eb-9c96-0fa48a4ef55c.png)
-![companies](https://user-images.githubusercontent.com/59026931/111066639-14631080-84d1-11eb-82a0-1a0526cc87f0.png)
+![Companies](https://user-images.githubusercontent.com/59026931/111066639-14631080-84d1-11eb-82a0-1a0526cc87f0.png)
 ![UserProfile](https://user-images.githubusercontent.com/59026931/111066973-debf2700-84d2-11eb-8ad8-77e8e6ecac3c.png)
 ![CompanyProfile](https://user-images.githubusercontent.com/59026931/111066938-b46d6980-84d2-11eb-9404-a1dd1ae2d5c7.png)
-![company-add](https://user-images.githubusercontent.com/59026931/111066651-1c22b500-84d1-11eb-9a5d-9a7cabab7a90.png)
+![CompanyAdd](https://user-images.githubusercontent.com/59026931/111066651-1c22b500-84d1-11eb-9a5d-9a7cabab7a90.png)
